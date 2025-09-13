@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Инга Сокольникова — Портфолио</title>
+
+  <style>
+    :root {
+      --bg: #f5f5f5;
+      --card: #000000;
+      --muted: #444444;
+      --accent: #A5A5A5;
+      --accent2: #A5A5A5;
+      --glass: rgba(255, 255, 255, 0.05);
+      --radius: 18px;
+      --max-width: 1140px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    body {
+      font-family: Manrope, Inter, Arial, sans-serif;
+      background: linear-gradient(180deg, #F5F5F5 0%, #FFFFFF 100%);
+      color: black;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 60px 24px
+    }
+
+    /* HERO */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      padding: 80px 0
+    }
+
+    .hero-text {
+      flex: 1 1 480px
+    }
+
+    .kicker {
+      font-size: 13px;
+      font-weight: 100;
+      letter-spacing: .15em;
+      color: #A5A5A5;
+      text-transform: uppercase
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 52px;
+      line-height: 1.1;
+      margin: 14px 0;
+      color: black;
+    }
+
+    p.lead {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 60ch
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 14px 26px;
+      border: none;
+      border-radius: var(--radius);
+      background: #A5A5A5;
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 0 15px rgba(128, 128, 128, 0.6);
+      transition: .4s
+    }
+
+    .btn:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 0 25px rgba(128, 128, 128, 0.8);
+    }
+
+    .hero-card {
+      flex: 0 1 360px;
+      background: var(--glass);
+      backdrop-filter: blur(6px);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, .5)
+    }
+
+    .avatar {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 14px
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 80px 0
+    }
+
+    .section-title {
+      margin-bottom: 20px
+    }
+
+    .section-title h2 {
+      font-size: 24px;
+      font-weight: 800;
+      color: black;
+    }
+
+    .section-title p {
+      font-size: 15px;
+      color: var(--muted)
+    }
+
+    /* SKILLS */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px
+    }
+
+    .skill {
+      padding: 10px 16px;
+      background: var(--glass);
+      border-radius: 50px;
+      font-weight: 600;
+      color: black;
+      transition: .3s
+    }
+
+    .skill:hover {
+      color: #fff;
+      background: linear-gradient(90deg, var(--accent), var(--accent2))
+    }
+
+    /* PROJECTS */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 20px
+    }
+
+    .project {
+      background: var(--glass);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: .5s;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, .6)
+    }
+
+    .project:hover {
+      transform: translateY(-10px) scale(1.02)
+    }
+
+    .project img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block
+    }
+
+    .project .meta {
+      padding: 16px
+    }
+
+    .project h3 {
+      margin: 0 0 6px;
+      font-size: 18px;
+      color: black;
+    }
+
+    .project p {
+      font-size: 14px;
+      color: var(--muted)
+    }
+
+    /* CONTACTS */
+    .contacts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 16px
+    }
+
+    .contact-item {
+      padding: 12px 18px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius);
+      font-size: 15px;
+      color: var(--muted)
+    }
+
+    .contact-item a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600
+    }
+
+    footer {
+      padding: 50px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px
+    }
+
+    /* reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .8s ease, transform .8s ease
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none
+    }
+
+    @media(max-width:880px) {
+      h1 {
+        font-size: 36px
+      }
+
+      .hero {
+        flex-direction: column-reverse;
+        text-align: left
+      }
+
+      .avatar {
+        height: 220px
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div class="container">
+      <header class="hero">
+        <div class="hero-text">
+          <div class="kicker">Портфолио</div>
+          <h1 class="reveal">Инга Сокольникова — начинающий веб-дизайнер</h1>
+          <p class="lead reveal">Привет! Мне 21 год. Это моё первое портфолио: работы в рекламе, презентации и дизайн
+            для образовательных проектов.</p>
+          <a href="#contacts" class="btn reveal">Связаться</a>
+          <a href="https://docs.google.com/document/d/11WJ4SpHqMP5aMb0s65MRzezW4tJ17ApjXMDR1g0tUOQ/edit?usp=sharing"
+            target="_blank" class="btn reveal">Больше моих работ в Google документе</a>
+        </div>
+        <div class="hero-card reveal">
+          <img class="avatar"
+            src="https://github.com/roadtoglob-cell/Inga1/blob/main/photo_2025-09-13 18.49.03.jpeg"
+            alt="Моё фото">
+        </div>
+      </header>
+
+      <section id="about" class="reveal">
+        <div class="section-title">
+          <h2>Кто я</h2>
+        </div>
+        <p style="max-width:72ch;color:black">Я учусь на менеджера в СПбГЭУ и параллельно на дизайнера в Бюро Горбунова.
+          Работала в партии «Новые люди», выигрывала грант, была совладельцем школы по робототехнике.</p>
+      </section>
+
+      <section id="skills" class="reveal">
+        <div class="section-title">
+          <h2>Навыки</h2>
+        </div>
+        <div class="skills">
+          <span class="skill">Illustrator</span>
+          <span class="skill">Figma</span>
+          <span class="skill">Photoshop</span>
+          <span class="skill">Notion</span>
+          <span class="skill">Asana</span>
+        </div>
+      </section>
+
+      <section id="projects" class="reveal">
+        <div class="section-title">
+          <h2>Проекты</h2>
+        </div>
+        <div class="grid">
+          <div class="project"><img
+              src="https://optim.tildacdn.pub/tild3934-6433-4331-b261-393161366238/-/resize/598x/-/format/webp/MagicEraser_250823_0.png.webp"
+              alt="Проект">
+            <div class="meta">
+              <h3>Капитаны — СПб</h3>
+              <p>Дизайн материалов и презентаций для образовательной программы партии «Новые люди».</p>
+            </div>
+          </div>
+          <div class="project"><img
+              src="https://optim.tildacdn.pub/tild6638-6332-4434-a230-643431633362/-/format/webp/MagicEraser_250823_0.png.webp"
+              alt="Проект">
+            <div class="meta">
+              <h3>Рекламный пост</h3>
+              <p>Концепция и макет рекламного поста для школы английского.</p>
+            </div>
+          </div>
+          <div class="project"><img
+              src="https://optim.tildacdn.pub/tild6661-3430-4663-b039-616463623563/-/resize/668x/-/format/webp/MagicEraser_250823_0.png.webp"
+              alt="Проект">
+            <div class="meta">
+              <h3>Презентации СПбГЭУ</h3>
+              <p>Разработка дизайна слайдов для учебных проектов.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contacts" class="reveal">
+        <div class="section-title">
+          <h2>Контакты</h2>
+        </div>
+        <div class="contacts">
+          <div class="contact-item">qwdepoy@mail.ru</div>
+          <div class="contact-item">+7 (952)-610-61-43</div>
+          <div class="contact-item"><a href="https://t.me/qwdepoy" target="_blank">Telegram</a></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 Инга Сокольникова. Все права защищены.
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target)
+        }
+      })
+    }, {
+      threshold: .15
+    });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
